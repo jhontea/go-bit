@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "go-bit/entities/proto";
+
+message SearchRequest {
+  string search = 1;
+  int32 page = 2;
+}
+
+message IMDBSearchData {
+  string title = 1;
+  string year = 2;
+  string imdbID = 3;
+  string type = 4;
+  string poster = 5;
+}
+
+message SearchResponse {
+  repeated IMDBSearchData list = 1;
+  string totalResults = 2;
+  string response = 3;
+}
+
+message GetDetailRequest {
+  string id = 1;
+}
+
+message IMDBGetDetailRating {
+    string source = 1;
+    string value = 2;
+}
+
+message GetDetailResponse {
+  string id = 1;
+  string Title = 2;
+  string Year = 3;
+  string Rated = 4;
+  string Released = 5;
+  string Runtime = 6;
+  string Genre = 7;
+  string Director = 8;
+  string Writer = 9;
+  string Actors = 10;
+  string Plot = 11;
+  string Language = 12;
+  string Country = 13;
+  string Awards = 14;
+  string Poster = 15;
+  repeated IMDBGetDetailRating list = 16;
+  string Metascore = 17;
+  string ImdbRating = 18;
+  string ImdbVotes = 19;
+  string ImdbID = 20;
+  string Type = 21;
+  string Dvd = 22;
+  string BoxOffice = 23;
+  string Production = 24;
+  string Website = 25;
+  string Response = 26;
+  string Error = 27;
+}
+
+service IMDBService {
+  rpc Search(SearchRequest) returns (SearchResponse);
+  rpc GetDetail(GetDetailRequest) returns (GetDetailResponse);
+}

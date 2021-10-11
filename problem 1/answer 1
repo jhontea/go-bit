@@ -1,0 +1,4 @@
+SELECT u.ID, u.UserName, u.Parent, p.UserName
+FROM `user` u
+LEFT JOIN `user` p on p.ID = u.Parent
+order by u.ID;
